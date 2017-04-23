@@ -1,1 +1,10 @@
 c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\PlanetHunters.exe.config
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\obj\Debug\PlanetHunters.csprojResolveAssemblyReference.cache
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\PlanetHunters.exe
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\PlanetHunters.pdb
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\EntityFramework.dll
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\EntityFramework.SqlServer.dll
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\EntityFramework.xml
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\EntityFramework.SqlServer.xml
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\obj\Debug\PlanetHunters.exe
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\obj\Debug\PlanetHunters.pdb
