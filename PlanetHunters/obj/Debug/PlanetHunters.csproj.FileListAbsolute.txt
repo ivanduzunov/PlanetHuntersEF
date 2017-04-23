@@ -8,3 +8,5 @@ c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunter
 c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\EntityFramework.SqlServer.xml
 c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\obj\Debug\PlanetHunters.exe
 c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\obj\Debug\PlanetHunters.pdb
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\Newtonsoft.Json.dll
+c:\users\mihail\documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\bin\Debug\Newtonsoft.Json.xml

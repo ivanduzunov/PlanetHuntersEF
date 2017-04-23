@@ -41,6 +41,10 @@
       <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -54,6 +58,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Import\DTO\AstronomerDTO.cs" />
+    <Compile Include="Import\DTO\DiscoveryDTO.cs" />
+    <Compile Include="Import\DTO\PlanetDTO.cs" />
+    <Compile Include="Import\DTO\StarDTO.cs" />
+    <Compile Include="Import\DTO\TelescopeDTO.cs" />
+    <Compile Include="Import\DTO\ImportJSON.cs" />
     <Compile Include="Models\Astronomer.cs" />
     <Compile Include="Models\Discovery.cs" />
     <Compile Include="Models\Planet.cs" />
@@ -66,7 +76,14 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Import\JSON\astronomers.json" />
+    <None Include="Import\JSON\planets.json" />
+    <None Include="Import\JSON\telescopes.json" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Import\XML\discoveries.xml" />
+    <Content Include="Import\XML\stars.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
