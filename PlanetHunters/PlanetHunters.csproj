@@ -60,6 +60,7 @@
   <ItemGroup>
     <Compile Include="Import\DTO\AstronomerDTO.cs" />
     <Compile Include="Import\DTO\DiscoveryDTO.cs" />
+    <Compile Include="Import\DTO\ImportXML.cs" />
     <Compile Include="Import\DTO\PlanetDTO.cs" />
     <Compile Include="Import\DTO\StarDTO.cs" />
     <Compile Include="Import\DTO\TelescopeDTO.cs" />

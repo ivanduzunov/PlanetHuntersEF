@@ -8,6 +8,8 @@ using Newtonsoft.Json;
 using PlanetHunters.Import.JSON;
 using System.IO;
 using PlanetHunters.Import.DTO;
+using System.Xml.Linq;
+
 
 namespace PlanetHunters
 {
@@ -16,8 +18,12 @@ namespace PlanetHunters
         static void Main(string[] args)
         {
             var context = new PlanetHuntersContext();
+            InitDB(context);
+            ImportAstronomers(context);
             ImportTelescopes(context);
-           
+            ImportStarSystemsAndPlanets(context);
+            ImportStars(context);
+            ImportDiscoveries(context);
         }
         public static void InitDB(PlanetHuntersContext cnxt)
         {
@@ -36,13 +42,13 @@ namespace PlanetHunters
         }
         public static void ImportAstronomers(PlanetHuntersContext context)
         {
-           PhaseTyper("Reading file Astronomers.json");
+            PhaseTyper("Reading file Astronomers.json");
             var json = File.ReadAllText(@"C:\Users\Mihail\Documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\Import\JSON\astronomers.json");
 
             var astronomersDTOsList = JsonConvert.DeserializeObject<IEnumerable<AstronomerDTO>>(json);
             ImportJSON.AddAstronomers(astronomersDTOsList);
-            
-            
+
+
         }
         public static void ImportTelescopes(PlanetHuntersContext context)
         {
@@ -52,5 +58,31 @@ namespace PlanetHunters
             ImportJSON.AddTelescopes(List);
             PhaseTyper("Telescopes added to database succesfully");
         }
+        public static void ImportStarSystemsAndPlanets(PlanetHuntersContext context)
+        {
+            PhaseTyper("Reading planets.json");
+            var json = File.ReadAllText(@"C:\Users\Mihail\Documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\Import\JSON\planets.json");
+            var List = JsonConvert.DeserializeObject<IEnumerable<PlanetDTO>>(json);
+            ImportJSON.AddStarSystems(List);
+            PhaseTyper("All Star Systems Imported!");
+            ImportJSON.AddPlanets(List);
+            PhaseTyper("All Planets Imported!");
+
+        }
+        public static void ImportStars(PlanetHuntersContext context)
+        {
+            PhaseTyper("Reading stars.xml");
+            XDocument starsDocument = XDocument.Load(@"C:\Users\Mihail\Documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\Import\XML\stars.xml");
+            XElement root = starsDocument.Root;
+            ImportXML.AddStars(root);
+        }
+        public static void ImportDiscoveries(PlanetHuntersContext context)
+        {
+            PhaseTyper("Reading discoveries.xml");
+            XDocument discoveriesDocument = XDocument.Load(@"C:\Users\Mihail\Documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\Import\XML\discoveries.xml");
+            XElement root = discoveriesDocument.Root;
+            ImportXML.AddDiscoveriesDTO(root);
+        }
     }
+
 }
