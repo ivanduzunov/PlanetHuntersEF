@@ -21,7 +21,7 @@ namespace PlanetHunters.Models
         [Required]
         public DateTime DateMade { get; set; }
         public int TelescopeId { get; set; }
-        public Telescope Telescope { get; set; }
+        public virtual Telescope Telescope { get; set; }
         public virtual ICollection<Star> Stars { get; set; }
         public virtual ICollection<Planet> Planets { get; set; }
         public virtual ICollection<Astronomer> Pioneers { get; set; }

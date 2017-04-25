@@ -21,8 +21,27 @@ namespace PlanetHunters
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Astronomer>().HasMany<Discovery>(a => a.PioneeringDiscoveries).WithMany(d => d.Pioneers).Map(pn => pn.ToTable("PioneersAstronomersDiscoveriues").MapLeftKey("PioneerId").MapRightKey("DiscoveryId"));
-            modelBuilder.Entity<Astronomer>().HasMany<Discovery>(a => a.ObservationDiscoveries).WithMany(d => d.Observers).Map(ob => ob.ToTable("ObverversAstronomersDiscoveries").MapLeftKey("ObserverId").MapRightKey("DiscoveryId"));
+
+            modelBuilder.Entity<Discovery>()
+                .HasMany(d => d.Pioneers)
+                .WithMany(a => a.PioneeringDiscoveries)
+                .Map(da =>
+                {
+                    da.ToTable("Pioneers");
+                    da.MapLeftKey("DiscoveryId");
+                    da.MapRightKey("AstronomerId");
+                });
+            modelBuilder.Entity<Discovery>()
+    .HasMany(d => d.Observers)
+    .WithMany(a => a.ObservationDiscoveries)
+    .Map(da =>
+    {
+        da.ToTable("Observers");
+        da.MapLeftKey("DiscoveryId");
+        da.MapRightKey("AstronomerId");
+    });
+
+
             modelBuilder.Entity<Telescope>().Property(t => t.MirrorDiameter).IsOptional();
             modelBuilder.Entity<Discovery>().HasRequired(d => d.Telescope).WithMany(t => t.Discoveries);
             modelBuilder.Entity<Planet>().HasRequired(p => p.HostStarSystem).WithMany(ss => ss.Planets);

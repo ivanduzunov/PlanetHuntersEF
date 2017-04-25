@@ -9,6 +9,7 @@ using PlanetHunters.Import.JSON;
 using System.IO;
 using PlanetHunters.Import.DTO;
 using System.Xml.Linq;
+using PlanetHunters.Export;
 
 
 namespace PlanetHunters
@@ -82,6 +83,10 @@ namespace PlanetHunters
             XDocument discoveriesDocument = XDocument.Load(@"C:\Users\Mihail\Documents\visual studio 2015\Projects\PlanetHunters\PlanetHunters\Import\XML\discoveries.xml");
             XElement root = discoveriesDocument.Root;
             ImportXML.AddDiscoveriesDTO(root);
+        }
+        public static void ExportPlanetsJson(PlanetHuntersContext context)
+        {
+
         }
     }
 

@@ -89,36 +89,37 @@ namespace PlanetHunters.Import.DTO
                 foreach (DiscoveryDTO discoveryDto in discoveries)
                 {
 
-                    if ((discoveryDto.Stars.Any() || discoveryDto.Planets.Count == 0 ||
-                       discoveryDto.Pioneers.Count == 0 || discoveryDto.Observers.Count == 0)
+                    if ((discoveryDto.Stars.Count == 0 && discoveryDto.Planets.Count == 0 &&
+                       discoveryDto.Pioneers.Count == 0 && discoveryDto.Observers.Count == 0)
                         || discoveryDto.DateMade == null || discoveryDto.Telescope == null)
                     {
                         Program.PhaseTyper("Invalid Discovery!");
+
                     }
                     else
                     {
-                        var planets = discoveryDto.Stars.Select(s => context.Planets.FirstOrDefault(ss => ss.Name == s)).ToList();
+                        var planets = discoveryDto.Planets.Select(p => context.Planets.FirstOrDefault(pp => pp.Name == p)).ToList();
                         var stars = discoveryDto.Stars.Select(s => context.Stars.FirstOrDefault(ss => ss.Name == s)).ToList();
-                        var pioneers = discoveryDto.Stars.Select(s => context.Astronomers.
-                        FirstOrDefault(ss => ss.FirstName + " " + ss.LastName == s)).ToList();
-                        var observers = discoveryDto.Stars.Select(s => context.Astronomers.
-                        FirstOrDefault(ss => ss.FirstName + " " + ss.LastName == s)).ToList();
+                        var pioneers = discoveryDto.Pioneers.Select(p => context.Astronomers.FirstOrDefault(a => a.FirstName + " " + a.LastName == p)).ToList();
+                        var observers = discoveryDto.Observers.Select(p => context.Astronomers.FirstOrDefault(a => a.FirstName + " " + a.LastName == p)).ToList();
 
                         Discovery discovery = new Discovery
                         {
                             DateMade = discoveryDto.DateMade,
-                            TelescopeId = context.Telescopes.Where(t => t.Name == discoveryDto.Telescope).Select(t => t.Id).First(),
+                            Telescope = context.Telescopes.FirstOrDefault(t => t.Name == discoveryDto.Telescope),
                             Planets = planets,
                             Stars = stars,
                             Observers = observers,
                             Pioneers = pioneers
                         };
                         context.Discoveries.Add(discovery);
-                        context.SaveChanges();
-                        Program.PhaseTyper($"Discovery, that is made on {discovery.DateMade} is imported in the DB!");
+
+                        Console.WriteLine($"Discovery, that is made on {discovery.DateMade} is imported in the DB!");
 
                     }
                 }
+                context.SaveChanges();
+           
             }
         }
     }
